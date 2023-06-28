@@ -15,7 +15,7 @@ import java.net.URI
 
 @Service
 @Qualifier("defaultImpl")
-class DefaultEndpointServiceImpl : IEndpointService {
+class CepEndpointServiceImpl : IEndpointService {
 
     override fun processPostRequest(urlRequest: String, request: HttpServletRequest, requestClient: RequestClient): ResponseEntity<Any> {
         val headers = RequestUtils.getDefaultHeader(request)
@@ -25,7 +25,7 @@ class DefaultEndpointServiceImpl : IEndpointService {
     override fun processGetRequest(urlRequest: String, request: HttpServletRequest, requestClient: RequestClient): ResponseEntity<Any> {
         try{
             val headers = RequestUtils.getDefaultHeader(request)
-            val uri = URI.create(urlRequest)
+            val uri = URI.create("http://viacep.com.br/ws/" + urlRequest.split("/", )[2] + "/json")
             return requestClient.getRequest(uri, headers)
         } catch (ex: Exception){
             println(ex)

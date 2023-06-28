@@ -20,4 +20,11 @@ interface RequestClient {
     )
     fun postRequest(uri: URI, @RequestHeader header: Map<String, Any>, @RequestBody request: Any): ResponseEntity<Any>
 
+    @RequestMapping(
+        method = [RequestMethod.GET],
+        consumes = [MediaType.APPLICATION_JSON_VALUE],
+        produces = [MediaType.APPLICATION_JSON_VALUE]
+    )
+    fun getRequest(uri: URI, @RequestHeader header: Map<String, Any>): ResponseEntity<Any>
+
 }

@@ -6,4 +6,6 @@ import org.springframework.http.ResponseEntity
 interface IHandlerService {
 
     fun processPost(urlRequest: String, request: HttpServletRequest) : ResponseEntity<Any>
+
+    fun processGet(urlRequest: String, request: HttpServletRequest) : ResponseEntity<Any>
 }
